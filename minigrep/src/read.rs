@@ -1,7 +1,7 @@
 use std::fs;
 
-fn read_file(file_path: String) {
-    
+pub fn read_file(file_path: &String) {
+
     println!("In file {}", file_path);
 
     let contents = fs::read_to_string(file_path).expect("Should be able to read file");
