@@ -9,7 +9,7 @@ impl Config {
 
         // Error Check
         if args.len() < 3 {
-            return Err("Missing arguements. Expecting more than 2 paramters.")
+            return Err("Missing arguements. Expecting 2 or more paramters.")
         }
 
         let query = args[1].clone();

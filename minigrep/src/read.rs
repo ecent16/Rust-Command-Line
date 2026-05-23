@@ -1,10 +1,14 @@
-use std::fs;
+use std::{error::Error, fs};
 
-pub fn read_file(file_path: &String) {
+use crate::config::Config;
 
-    println!("In file {}", file_path);
+pub fn read_file(config: &Config) -> Result<(), Box<dyn Error>> {
 
-    let contents = fs::read_to_string(file_path).expect("Should be able to read file");
+    println!("In file {}", &config.file_path);
+
+    let contents = fs::read_to_string(&config.file_path).expect("Should be able to read file");
 
     println!("With text:\n{}", contents);
+
+    Ok(())
 }

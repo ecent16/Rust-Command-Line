@@ -17,7 +17,10 @@ fn main() {
 
     println!("Searching for '{}'\n", config.query);
 
-    read_file(&config.file_path);
+    if let Err(e) = read_file(&config) {
+        println!("Application error: {}", e); 
+        process::exit(1);
+    };
 
 }
 
