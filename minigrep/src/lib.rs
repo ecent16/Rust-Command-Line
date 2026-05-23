@@ -1,6 +1,18 @@
 
-pub fn search<'a>(query: &String, contents: &'a String) -> Vec<&'a String> {
-    vec![]
+pub fn search<'a>(query: &String, contents: &'a String) -> Vec<&'a str> {
+
+    let  mut result = Vec::new();
+    for line in contents.lines() {
+        if line.contains(query) {
+            result.push(line);
+        }
+    }
+
+    if result.len() < 1 {
+        result.push("No results found");
+    }
+
+    result
 }
 
 #[cfg(test)]
