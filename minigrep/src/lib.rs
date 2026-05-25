@@ -34,15 +34,14 @@ mod tests {
 
     #[test]
     fn one_result() {
-        let query = String::from("duct");
-        let contents = String::from("\
+        let query = "duct";
+        let contents = "\
             Rust: 
             safe, fast, productive. 
             Pick three.
-            Duct Tape.
-        ");
+            Duct Tape.";
 
-        assert_eq!(vec!["safe, fast, productive."], search(&query, &contents));
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
     }
 
     #[test]

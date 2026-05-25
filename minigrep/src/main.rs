@@ -8,7 +8,7 @@ use config::Config;
 
 fn main() {
 
-    let args: Vec<String> = env::args().collect();
+    let args: Vec<String> = env::args().collect(); // Command line input
 
     let config = Config::build(&args).unwrap_or_else(|err| {
         println!("Problem parsing arguements: {}", err);

@@ -1,7 +1,7 @@
 use std::{error::Error, fs};
 
 use crate::config::Config;
-use minigrep::search;
+use minigrep::{search, search_case_insensitive};
 
 pub fn read_file(config: &Config) -> Result<(), Box<dyn Error>> {
 
@@ -9,8 +9,14 @@ pub fn read_file(config: &Config) -> Result<(), Box<dyn Error>> {
 
     let contents = fs::read_to_string(&config.file_path)?;
 
-    for i in search(&config.query, &contents) {
-        println!("{i}");
+    let result = if config.ignore_case {
+        search_case_insensitive(&config.query, &contents)
+    } else {
+        search(&config.query, &contents)
+    };
+
+    for line in result {
+        println!("{line}");
     }
 
     Ok(())
